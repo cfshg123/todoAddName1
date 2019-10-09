@@ -1,0 +1,23 @@
+{
+  "id": "1448485",
+  "name": "Vue2.0_to_do_list-addName-",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3088800",
+      "name": "扩展监视器",
+      "font_class": "kuozhanjianshiqi",
+      "unicode": "e6cb",
+      "unicode_decimal": 59083
+    },
+    {
+      "icon_id": "9868432",
+      "name": "搜索--1",
+      "font_class": "xingtaiduICON_sousuo--",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

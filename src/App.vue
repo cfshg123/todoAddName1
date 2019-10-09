@@ -4,6 +4,8 @@
     <router-view></router-view>-->
     <h1 v-html="msg"></h1>
     <input  type="text" v-model="itemNew" v-on:keyup.enter="addNew"/>
+    <i class="iconfont icon-xingtaiduICON_sousuo-- sousuoicon" v-on:click="searchList()"></i>
+    <!-- <input type="text"> -->
     <ul>
     	<li v-for="(item,index) in items" :key="item.uuid" v-bind:class="{isStudent:item.student}" v-on:click="turnRed(item)">
     		{{item.name}}
@@ -25,9 +27,10 @@ export default {
   name: 'app',//name属性作为组件名称，全局 ID 自动作为组件的 name
   data () {
   	return {
-  		msg:'添加姓名测试1212',
+  		msg:'添加姓名',
   		items:Storage.fetch(),//获取存在 storage 里面的键值对
-  		itemNew:''
+        itemNew:'',
+        newArr: []   // 存放搜索后过滤的新的数组
   	}
   },
   components:{
@@ -48,13 +51,22 @@ export default {
                 uuid:Math.random()
             });
           }
-  		
   		//清空文本栏
   		this.itemNew = null;
       },
+
       delList:function (index) {
           this.items.splice(index,1);
-  	}
+      },
+      searchList: function(){
+          debugger
+          this.items = this.items.filter((item) => {
+              if(this.itemNew.length >0 && item["name"].indexOf(this.itemNew) >= 0){
+                 return item;
+              }
+          })
+          console.log(this.items)
+      }
   },
   watch:{
   	items:{
@@ -78,6 +90,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  position: relative;
 }
 #app ul li {
     margin: 5px auto;
@@ -94,5 +107,11 @@ export default {
    font-size: 22px;
    cursor: pointer;
    text-align: center;
+}
+#app .sousuoicon {
+    font-size: 30px;
+    position: absolute;
+    top: 59px;
+    cursor: pointer;
 }
 </style>
